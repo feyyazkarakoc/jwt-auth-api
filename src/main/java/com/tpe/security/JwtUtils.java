@@ -15,7 +15,7 @@ public class JwtUtils {
 
     private String jwtSecret = "sboot";
 
-    private long jwtExpiration = 86400000;//24*60*60*1000 ms (1 day)
+    private long jwtExpiration = 8640000;//24*60*60*1000 ms (1 day)
 
     public String generateToken(Authentication authentication){
 
