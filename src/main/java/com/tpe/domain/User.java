@@ -1,12 +1,13 @@
 package com.tpe.domain;
 
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -32,7 +33,7 @@ public class User {
     private String lastName;
 
     @Column(length = 25,nullable = false,unique = true)
-    private String username;
+    private String userName;
 
     @Column(length = 255,nullable = false)
     private String password;

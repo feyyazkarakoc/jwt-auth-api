@@ -3,8 +3,7 @@ package com.tpe.security;
 
 import com.tpe.security.service.UserDetailsImpl;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.*;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
@@ -29,5 +28,27 @@ public class JwtUtils {
                 compact();
     }
 
+
+    public boolean validateToken(String token){
+
+        try {
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            return true;
+        } catch (ExpiredJwtException | UnsupportedJwtException | MalformedJwtException | SignatureException |
+                 IllegalArgumentException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
+    public String getUserNameFromJwtToken(String token){
+        return Jwts.parser().
+                setSigningKey(jwtSecret).
+                parseClaimsJws(token).
+                getBody().
+                getSubject();
+    }
 
 }
