@@ -14,7 +14,7 @@ public class RoleService {
     @Autowired
     private RoleRepository roleRepository;
 
-    public Role findByType(UserRole roleType){
-        return roleRepository.findByName(roleType).orElseThrow(()-> new ResourceNotFoundException("Role not found"));
+    public Role findByType(UserRole roleType) {
+        return roleRepository.findByName(roleType).orElseThrow(() -> new ResourceNotFoundException("Role not found"));
     }
 }

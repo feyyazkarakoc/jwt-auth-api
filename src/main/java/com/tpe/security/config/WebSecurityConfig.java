@@ -34,21 +34,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).
                 and().
                 authorizeRequests().
-                antMatchers("/login","/register").permitAll().
+                antMatchers("/login", "/register").permitAll().
                 anyRequest().
                 authenticated();
 
-        http.addFilterBefore(authTokenFilter(),UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Bean
-    public AuthTokenFilter authTokenFilter(){
-       return new AuthTokenFilter();
+    public AuthTokenFilter authTokenFilter() {
+        return new AuthTokenFilter();
     }
 
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 

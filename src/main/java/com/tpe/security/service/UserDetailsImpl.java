@@ -27,14 +27,14 @@ public class UserDetailsImpl implements UserDetails {
     private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public static UserDetailsImpl build(User user){
+    public static UserDetailsImpl build(User user) {
 
         List<SimpleGrantedAuthority> authorities =
                 user.getRoles().stream().
-                map(role -> new SimpleGrantedAuthority(role.getName().name())).
-                collect(Collectors.toList());
+                        map(role -> new SimpleGrantedAuthority(role.getName().name())).
+                        collect(Collectors.toList());
 
-        return new UserDetailsImpl(user.getId(), user.getUserName(), user.getPassword(),authorities);
+        return new UserDetailsImpl(user.getId(), user.getUserName(), user.getPassword(), authorities);
     }
 
 

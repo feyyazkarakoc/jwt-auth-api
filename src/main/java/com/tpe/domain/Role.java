@@ -25,7 +25,7 @@ public class Role {
     private Integer id;
 
     @Enumerated(EnumType.STRING)
-    @Column(length = 30,nullable = false)
+    @Column(length = 30, nullable = false)
     private UserRole name;
 
     @Override

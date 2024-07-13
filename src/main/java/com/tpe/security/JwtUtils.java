@@ -16,20 +16,20 @@ public class JwtUtils {
 
     private long jwtExpiration = 8640000;//24*60*60*1000 ms (1 day)
 
-    public String generateToken(Authentication authentication){
+    public String generateToken(Authentication authentication) {
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
         return Jwts.builder().
                 setSubject(userDetails.getUsername()).
                 setIssuedAt(new Date()).
-                setExpiration(new Date(new Date().getTime()+jwtExpiration)).
-                signWith(SignatureAlgorithm.HS512,jwtSecret).
+                setExpiration(new Date(new Date().getTime() + jwtExpiration)).
+                signWith(SignatureAlgorithm.HS512, jwtSecret).
                 compact();
     }
 
 
-    public boolean validateToken(String token){
+    public boolean validateToken(String token) {
 
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
@@ -43,7 +43,7 @@ public class JwtUtils {
     }
 
 
-    public String getUserNameFromJwtToken(String token){
+    public String getUserNameFromJwtToken(String token) {
         return Jwts.parser().
                 setSigningKey(jwtSecret).
                 parseClaimsJws(token).

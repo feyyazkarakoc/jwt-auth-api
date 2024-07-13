@@ -30,7 +30,7 @@ public class UserService {
     public void registerUser(RegisterRequest request) {
 
         if (userRepository.existsByUserName(request.getUserName())) {
-            throw new ConflictException("User is alreadt registered.");
+            throw new ConflictException("User is already registered.");
         }
 
 

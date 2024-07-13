@@ -36,7 +36,7 @@ public class UserJWTController {
     private JwtUtils jwtUtils;
 
     @PostMapping("/register")//http://localhost:8080/register + POST + JSON
-    public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request){
+    public ResponseEntity<String> register(@Valid @RequestBody RegisterRequest request) {
         userService.registerUser(request);
         String responseMessage = "User registered successfully.";
         return new ResponseEntity<>(responseMessage, HttpStatus.CREATED);
@@ -44,16 +44,16 @@ public class UserJWTController {
 
 
     @PostMapping("/login")//http://localhost:8080/login + POST + JSON
-    public ResponseEntity<Map<String,String>> login(@Valid @RequestBody LoginRequest request){
+    public ResponseEntity<Map<String, String>> login(@Valid @RequestBody LoginRequest request) {
 
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUserName(),request.getPassword()));
+        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUserName(), request.getPassword()));
 
         String token = jwtUtils.generateToken(authentication);
 
-        Map<String,String> map = new HashMap<>();
-        map.put("token",token);
-        map.put("status","true");
+        Map<String, String> map = new HashMap<>();
+        map.put("token", token);
+        map.put("status", "true");
 
-        return new ResponseEntity<>(map,HttpStatus.CREATED);
+        return new ResponseEntity<>(map, HttpStatus.CREATED);
     }
 }
