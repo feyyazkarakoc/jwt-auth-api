@@ -8,9 +8,9 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/jwt_db_tekrar
-    username: db_user1
-    password: 12345
+    url: jdbc:postgresql://localhost:5432/???
+    username: ???
+    password: ???
 
   jpa:
     hibernate:
